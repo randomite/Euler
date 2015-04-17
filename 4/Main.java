@@ -1,8 +1,27 @@
 public class Main {
 	public static void main(String[] args) {
-		int ORIGINAL_NUMBER = 9119;
 
-		String palString = Integer.toString(ORIGINAL_NUMBER);
+		int number = 9119;
+		int answer =0; 
+
+		for(int i=999;i>=100;i--) {
+			for (int j=999;j>=100;j--) {
+				number = i*j;
+				if(setup(number)){
+					answer = i*j;
+					break;
+				}
+
+			}
+		}
+
+		System.out.println("Answer: " + answer);
+
+
+	}
+
+	public static boolean setup(int number){
+		String palString = Integer.toString(number);
 
 		String[] palArray = new String[palString.length()];
 		String[] reversePalArray = new String[palString.length()];
@@ -15,10 +34,12 @@ public class Main {
 			reversePalArrayLen--;
 		}
 
-		printArray(palArray, "palArray");
-		printArray(reversePalArray, "reversePalArray");
+		//printArray(palArray, "palArray");
+		//printArray(reversePalArray, "reversePalArray");
 
-		System.out.println("checkPal: " + checkPal(palArray, reversePalArray, reversePalArrayLen));
+		//System.out.println("checkPal: " + checkPal(palArray, reversePalArray, reversePalArrayLen));
+
+		return checkPal(palArray, reversePalArray, reversePalArrayLen);
 	}
 	
 	public static boolean checkPal(String[] pal, String[] revPal, int revPalLen){
